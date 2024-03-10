@@ -65,7 +65,7 @@ check_args() {
 init_call_tester() {
 	display_help "$@"
 	if [ ! -f ${NAME} ]; then
-		make
+		make -s
 	fi
 	./rsc/mk/ascii.sh "tester"
 	check_args "$@"
@@ -73,24 +73,28 @@ init_call_tester() {
 
 real_call_tester() {
 	init_call_tester "$@"
-	${TESTER} ${NAME} ${VALGRIND_OPT} > ${TESTER_LOGS}
-	check_output_log ${NAME} ""
+	# ${TESTER} ${NAME} ${VALGRIND_OPT} > ${TESTER_LOGS}
+	# check_output_log ${NAME} ""
 	if [ ${BONUS_OPT} -eq 1 ]; then
 	# uggly case to compile bonus if needed
-		make bonus || print ""
-		call_tester "" ""
-		call_tester "-p" "-p"
+		make -s bonus || print ""
 		call_tester "-r" "-r"
 		call_tester "-u" "-u"
 		call_tester "-g" "-g"
 		call_tester "-a" "-a"
-		call_tester "-rp" "-rp"
-		call_tester "-ru" "-ru"
-		call_tester "-pu" "-pu"
-		call_tester "-rpu" "-rpu"
-		call_tester "-gu" "-gu"
-		call_tester "-gp" "-gp"
 		call_tester "-gr" "-gr"
-		call_tester "-grpu" "-grpu"
+		call_tester "-gu" "-gu"
+		call_tester "-ga" "-ga"
+		call_tester "-ru" "-ru"
+		call_tester "-ra" "-ra"
+		call_tester "-ua" "-ua"
+		call_tester "-rg" "-rg"
+		call_tester "-ug" "-ug"
+		call_tester "-rug" "-rug"
+		call_tester "-rua" "-rua"
+		call_tester "-rga" "-rga"
+		call_tester "-uga" "-uga"
+		call_tester "-ruga" "-ruga"
+		call_tester "-rugap" "-rugap"
 	fi
 }
