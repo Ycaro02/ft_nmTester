@@ -1,39 +1,10 @@
 #!/bin/bash
 
-TESTER="rsc/nm_tester.sh" 
-NAME="ft_nm"
+source ft_nmTester/sh/color.sh
+source ft_nmTester/sh/call_tester_utils.sh
 
+# First args is valgrind 1 for enalbe, other or empty for disable
+# Second args is bonus test, 1 for enable, other or empty for disable
+# Third args is verbose mode, 1 for enable, other or empty for disable
 
-# First args is valgrind option 0 for no or 1 for enable
-# Second args is bonus test, just put a second to enable it
-
-VALGRIND_OPT=0
-
-if [ ! -z $1 ]; then
-    VALGRIND_OPT=$1
-fi
-
-
-./rsc/mk/ascii.sh "tester"
-
-make
-
-${TESTER} ${NAME} ${VALGRIND_OPT}
-
-if [ ! -z $2 ]; then
-    # uggly case to compile bonus if needed
-    make bonus || print ""
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-p" "-p"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-r" "-r"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-u" "-u"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-g" "-g"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-a" "-a"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-rp" "-rp"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-ru" "-ru"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-pu" "-pu"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-rpu" "-rpu"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-gu" "-gu"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-gp" "-gp"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-gr" "-gr"
-    ${TESTER} ${NAME} ${VALGRIND_OPT} "-grpu" "-grpu"
-fi
+real_call_tester "$1" "$2" "$3"
