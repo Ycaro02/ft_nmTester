@@ -3,18 +3,26 @@
 TESTER="rsc/nm_tester.sh" 
 NAME="ft_nm"
 
+
+# First args is valgrind option 0 for no or 1 for enable
+# Second args is bonus test, just put a second to enable it
+
 VALGRIND_OPT=0
 
 if [ ! -z $1 ]; then
-    VALGRIND_OPT=1
+    VALGRIND_OPT=$1
 fi
+
 
 ./rsc/mk/ascii.sh "tester"
 
-${TESTER} ${NAME}
+make
+
 ${TESTER} ${NAME} ${VALGRIND_OPT}
 
 if [ ! -z $2 ]; then
+    # uggly case to compile bonus if needed
+    make bonus || print ""
     ${TESTER} ${NAME} ${VALGRIND_OPT} "-p" "-p"
     ${TESTER} ${NAME} ${VALGRIND_OPT} "-r" "-r"
     ${TESTER} ${NAME} ${VALGRIND_OPT} "-u" "-u"
