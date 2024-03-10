@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TESTER="rsc/nm_tester.sh" 
+TESTER="ft_nmTester/nm_tester.sh" 
 NAME="ft_nm"
 TESTER_LOGS="tester_logss"
 VALGRIND_OPT=0
