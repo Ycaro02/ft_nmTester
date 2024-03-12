@@ -67,7 +67,7 @@ init_call_tester() {
 	if [ ! -f ${NAME} ]; then
 		make -s
 	fi
-	./rsc/mk/ascii.sh "tester"
+	./ft_nmTester/mk/ascii.sh "tester"
 	check_args "$@"
 }
 
