@@ -12,7 +12,7 @@ if [ -z $4 ]; then
 	NM_FLAGS=""
 	FT_NM_FLAGS=""
 else
-	make bonus > /dev/null || printf ""
+	make -s bonus > /dev/null || printf ""
 	NM_FLAGS=" $3"
 	FT_NM_FLAGS=" $4"
 fi
