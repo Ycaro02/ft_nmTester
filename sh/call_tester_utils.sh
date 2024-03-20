@@ -77,7 +77,7 @@ real_call_tester() {
 	check_output_log ${NAME} ""
 	if [ ${BONUS_OPT} -eq 1 ]; then
 	# uggly case to compile bonus if needed
-		make -s bonus || print ""
+		make -s bonus || printf ""
 		call_tester "-r" "-r"
 		call_tester "-u" "-u"
 		call_tester "-g" "-g"
