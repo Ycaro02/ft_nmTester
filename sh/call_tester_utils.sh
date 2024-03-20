@@ -73,8 +73,8 @@ init_call_tester() {
 
 real_call_tester() {
 	init_call_tester "$@"
-	# ${TESTER} ${NAME} ${VALGRIND_OPT} > ${TESTER_LOGS}
-	# check_output_log ${NAME} ""
+	${TESTER} ${NAME} ${VALGRIND_OPT} > ${TESTER_LOGS}
+	check_output_log ${NAME} ""
 	if [ ${BONUS_OPT} -eq 1 ]; then
 	# uggly case to compile bonus if needed
 		make -s bonus || print ""

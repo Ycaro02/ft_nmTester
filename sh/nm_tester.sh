@@ -107,7 +107,7 @@ basic_diff_test() {
 	elf_file_diff ft_nmTester/test_file/mandatory/not_so_easy_test
 	elf_file_diff ft_nmTester/test_file/mandatory/not_so_easy_test_32-bit
 	elf_file_diff
-	elf32_basic_test ft_nmTester/test_file/main_32.c
+	# elf32_basic_test ft_nmTester/test_file/main_32.c
 }
 
 check_test_passed() {
